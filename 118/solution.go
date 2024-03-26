@@ -23,3 +23,4 @@ func generate(numRows int) [][]int {
 
 	return result
 }
+
