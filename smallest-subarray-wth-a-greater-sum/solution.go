@@ -3,30 +3,30 @@ package main
 import "fmt"
 
 func main() {
-	tests := []struct{
-		S int
-		arr []int
+	tests := []struct {
+		S    int
+		arr  []int
 		want int
 	}{
 		{
-			S: 7,
-			arr: []int{2,1,5,2,3,2},
-			want: 2,
+			S:    10,
+			arr:  []int{1, 1, 1},
+			want: 0,
 		},
 		{
-			S: 7,
-			arr: []int{2,1,5,2,8},
+			S:    7,
+			arr:  []int{2, 1, 5, 2, 8},
 			want: 1,
 		},
 		{
-			S: 8,
-			arr: []int{3,4,1,1,6},
+			S:    8,
+			arr:  []int{3, 4, 1, 1, 6},
 			want: 3,
 		},
 	}
-	
+
 	for _, tt := range tests {
-		fmt.Printf("got: %d, want %d\n",findMinSubArray(tt.S, tt.arr), tt.want)
+		fmt.Printf("got: %d, want %d\n", findMinSubArray(tt.S, tt.arr), tt.want)
 	}
 }
 
@@ -39,22 +39,18 @@ func findMinSubArray(S int, arr []int) int {
 
 	for r < len(arr) {
 		sum += arr[r]
-		if sum < S {
-			r++
-		} else if sum >= S {
-			
-			smallest = min(smallest, r - l + 1)
+
+		if sum >= S {
+			smallest = min(smallest, r-l+1)
 			sum -= arr[l]
-			
 			l++
-			
-			if l == r {
-				sum -= arr[l]
-			} else {
-				sum -= arr[r]
-			}
+			sum -= arr[r]
+		} else {
+			r++
 		}
 	}
+
+	
 
 	return smallest
 }

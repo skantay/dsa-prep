@@ -33,14 +33,16 @@ func findMaxSumSubArray(k int, arr []int) int {
 	var sum int
 
 	for r < len(arr) {
-		sum += arr[r]
-		r++
-		k--
-
-		if k == 1 {
+		if k > 0 {
+			sum += arr[r]
+			r++
+			k--
+		} else {
 			result = max(result, sum)
 			sum -= arr[l]
-			k++
+			sum += arr[r]
+			l++	
+			r++
 		}
 	}
 
