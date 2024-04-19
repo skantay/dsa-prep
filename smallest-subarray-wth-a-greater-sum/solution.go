@@ -1,6 +1,7 @@
 package main
 
 import "fmt"
+import "math"
 
 func main() {
 	tests := []struct {
@@ -23,15 +24,31 @@ func main() {
 			arr:  []int{3, 4, 1, 1, 6},
 			want: 3,
 		},
+		{
+			S: 10,
+			arr: []int{1,1,1,1,1,1,1,1,1,1,1,1,1},
+			want: 10,
+		},
+	}
+	var count int
+	for index, tt := range tests {
+		got := findMinSubArray(tt.S, tt.arr)
+
+		if got != tt.want {
+			count++
+			fmt.Printf("test case: #%d\ngot: %d\nwanted:%d\n----------\n",index+1,got,tt.want)
+		}
 	}
 
-	for _, tt := range tests {
-		fmt.Printf("got: %d, want %d\n", findMinSubArray(tt.S, tt.arr), tt.want)
+	if count != 0 {
+		fmt.Println("try again")
+	} else {
+		fmt.Println("good job")
 	}
 }
 
 func findMinSubArray(S int, arr []int) int {
-	var smallest int = len(arr)
+	var smallest int = math.MaxInt32
 
 	var l, r int
 
@@ -50,7 +67,9 @@ func findMinSubArray(S int, arr []int) int {
 		}
 	}
 
-	
+	if smallest == math.MaxInt32 {
+		return 0
+	}
 
 	return smallest
 }
