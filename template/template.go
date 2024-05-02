@@ -1,16 +1,17 @@
 package main
 
+import "fmt"
+
 func main() {
 	tests := []struct { // change types based on your exercise
-		want	int // expected output
-		values	any // values which function will expect
+		want   int // expected output
+		values any // values which function will expect
 	}{
-		{// describe test cases
-			want: 1,
+		{ // describe test cases
+			want:   1,
 			values: 1,
 		},
 	}
-
 
 	var count int
 
@@ -19,7 +20,7 @@ func main() {
 
 		if got != tt.want {
 			count++
-			fmt.Printf("test case: #%s\ngot: %d\nwant: %d\n-------\n", i+1,got,tt.want)
+			fmt.Printf("test case: #%s\ngot: %d\nwant: %d\n-------\n", i+1, got, tt.want)
 		}
 	}
 
@@ -29,7 +30,6 @@ func main() {
 		fmt.Println("good job")
 	}
 }
-
 
 // edit this function
 func testingFunction(values any) int {
