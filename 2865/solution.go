@@ -23,7 +23,7 @@ func getSum(i int, heightsOriginal []int) int64 {
     rightSide++
 
     for ; rightSide < len(heightsOriginal); rightSide++ {
-        for len(stack) != 0 && heights[rightSide] > heights[stack[len(stack)-1]] {
+        if len(stack) != 0 && heights[rightSide] > heights[stack[len(stack)-1]] {
             heights[rightSide] = heights[stack[len(stack)-1]]
         }
 
@@ -39,7 +39,7 @@ func getSum(i int, heightsOriginal []int) int64 {
     leftSide--
 
     for ; leftSide >= 0; leftSide-- {
-        for len(stack) != 0 && heights[leftSide] > heights[stack[len(stack)-1]] {
+        if len(stack) != 0 && heights[leftSide] > heights[stack[len(stack)-1]] {
             heights[leftSide] = heights[stack[len(stack)-1]]
         }
 
