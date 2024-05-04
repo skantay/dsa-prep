@@ -2,18 +2,19 @@ package main
 
 import "fmt"
 
-func main() {
-	defer func() {
-		fmt.Println("1")
-		fmt.Print(recover())
-	}()
-	defer func() {
+type say struct {
+	m string
+}
 
-		fmt.Println("2")
-		defer fmt.Print(recover())
-		defer panic(1)
-		recover()
-	}()
-	defer recover()
-	panic(2)
+type p struct {
+	*say
+}
+
+func (s *say) print() {
+	fmt.Println(s)
+}
+
+func main() {
+	ad := p{}
+	ad.print()
 }
