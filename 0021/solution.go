@@ -5,6 +5,7 @@ type ListNode struct {
 	Next *ListNode
 }
 
+// Simple
 func mergeTwoLists1(list1 *ListNode, list2 *ListNode) *ListNode {
 	if list1 == nil && list2 == nil {
 		return nil
@@ -39,6 +40,7 @@ func mergeTwoLists1(list1 *ListNode, list2 *ListNode) *ListNode {
 	return dummy.Next
 }
 
+// Recursion
 func mergeTwoLists2(list1 *ListNode, list2 *ListNode) *ListNode {
 	if list1 == nil && list2 == nil {
 		return nil
